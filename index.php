@@ -1,6 +1,6 @@
 <?php
 	$root = realpath($_SERVER["DOCUMENT_ROOT"])."/";
-	require $root."vendor/autoload.php";
+	require $root."php/vendor/autoload.php";
 
 	// Create new Plates instance
 	$template = new League\Plates\Engine('views');
