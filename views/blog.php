@@ -45,7 +45,7 @@
 
 							<div class="row justify-content-center mt-60">
 								<div class="col-md-4">
-									<a href="<?= $this->urlTo('blog','route') ?>" class="btn btn-success d-block">VOLVER</a>
+									<a href="<?= $this->urlTo('blog') ?>" class="btn btn-success d-block">VOLVER</a>
 								</div>
 							</div>
 						</div>
@@ -127,7 +127,7 @@
 
 													$url .= slugger($blog["name"]);
 												?>
-												<a href="<?= $this->urlTo($url,'route') ?>" class="btn btn-success btn-block mt-4 text-white">LEER COMPLETO</a>
+												<a href="<?= $this->urlTo($url) ?>" class="btn btn-success btn-block mt-4 text-white">LEER COMPLETO</a>
 											</div>
 										</div>
 									</div>
@@ -176,7 +176,7 @@
 
 													$url .= slugger($blog["name"]);
 												?>
-												<a href="<?= $this->urlTo($url,'route') ?>" class="btn btn-success btn-block mt-4 text-white">LEER COMPLETO</a>
+												<a href="<?= $this->urlTo($url) ?>" class="btn btn-success btn-block mt-4 text-white">LEER COMPLETO</a>
 											</div>
 										</div>
 									</div>
@@ -313,7 +313,7 @@
 
 															$url .= slugger($blog["name"]);
 														?>
-														<a href="<?= $this->urlTo($url,'route') ?>" class="btn btn-success btn-block mt-4 text-white">LEER COMPLETO</a>
+														<a href="<?= $this->urlTo($url) ?>" class="btn btn-success btn-block mt-4 text-white">LEER COMPLETO</a>
 													</div>
 												</div>
 											</div>
@@ -362,7 +362,7 @@
 
 															$url .= slugger($blog["name"]);
 														?>
-														<a href="<?= $this->urlTo($url,'route') ?>" class="btn btn-success btn-block mt-4 text-white">LEER COMPLETO</a>
+														<a href="<?= $this->urlTo($url) ?>" class="btn btn-success btn-block mt-4 text-white">LEER COMPLETO</a>
 													</div>
 												</div>
 											</div>
@@ -474,9 +474,9 @@
 <?php $this->stop() ?>
 
 <?php $this->push("scripts") ?>
-	<script src="<?= $this->urlTo('assets/js/multilevel.js'); ?>" async="async"></script>
-	<script src="<?= $this->urlTo('assets/js/search.js'); ?>"></script>
-	<script src="<?= $this->urlTo('assets/js/landing-cover.js'); ?>"></script>
+	<?= $this->htmlScript("assets/js/multilevel.js",["async"=>"async"]) ?>
+	<?= $this->htmlScript("assets/js/search.js") ?>
+	<?= $this->htmlScript("assets/js/landing-cover.js") ?>
 	<script>
 		$(document).ready(function() {
 			var max = 0;

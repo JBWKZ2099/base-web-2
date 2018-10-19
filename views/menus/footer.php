@@ -7,4 +7,4 @@
 		</div>
 	</div>
 </footer>
-<script src="<?= $this->urlTo('assets/js/foot.js'); ?>"></script>
+<?= $this->htmlScript('assets/js/foot.js'); ?>

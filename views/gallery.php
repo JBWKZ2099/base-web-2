@@ -2,11 +2,11 @@
 
 <?php $this->start("main") ?>
 	<section id="gallery-title" class="bg-blue-hard box-shadow-inner pt-45 pb-45 relativer">
-		<img class="dots-2" src="http://placehold.it/100x150.png?text=100x150.png" alt="">
-		<img class="dots-3" src="http://placehold.it/100x150.png?text=100x150.png" alt="">
+		<img class="dots-2" src="<?= $this->urlTo('http://placehold.it/100x150.png?text=100x150.png') ?>" alt="">
+		<img class="dots-3" src="<?= $this->urlTo('http://placehold.it/100x150.png?text=100x150.png') ?>" alt="">
 		
 		<div class="container-custom">
-			<img class="title-penguin" src="http://placehold.it/140x180.png?text=140x180.png" alt="">
+			<img class="title-penguin" src="<?= $this->urlTo('http://placehold.it/140x180.png?text=140x180.png') ?>" alt="">
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="h1-bigger text-white adam-gorry-font"><strong>GALERÍA</strong></h1>
@@ -18,22 +18,22 @@
 	<section class="container-fluid pt-60 pb-60 mb-0 mb-md-5">
 		<div class="row gal-container" data-max="6">
 			<div class="col-md-4">
-				<img data-deploy="modal" data-id="1" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="http://placehold.it/900x700.png?text=900x700 1.jpg" alt="">
+				<img data-deploy="modal" data-id="1" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="<?= $this->urlTo('http://placehold.it/900x700.png?text=900x700 1.jpg') ?>" alt="">
 			</div>
 			<div class="col-md-4">
-				<img data-deploy="modal" data-id="2" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="http://placehold.it/900x700.png?text=900x700 2.jpg" alt="">
+				<img data-deploy="modal" data-id="2" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="<?= $this->urlTo('http://placehold.it/900x700.png?text=900x700 2.jpg') ?>" alt="">
 			</div>
 			<div class="col-md-4">
-				<img data-deploy="modal" data-id="3" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="http://placehold.it/900x700.png?text=900x700 3.jpg" alt="">
+				<img data-deploy="modal" data-id="3" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="<?= $this->urlTo('http://placehold.it/900x700.png?text=900x700 3.jpg') ?>" alt="">
 			</div>
 			<div class="col-md-4">
-				<img data-deploy="modal" data-id="4" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="http://placehold.it/900x700.png?text=900x700 4.jpg" alt="">
+				<img data-deploy="modal" data-id="4" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="<?= $this->urlTo('http://placehold.it/900x700.png?text=900x700 4.jpg') ?>" alt="">
 			</div>
 			<div class="col-md-4">
-				<img data-deploy="modal" data-id="5" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="http://placehold.it/900x700.png?text=900x700 5.jpg" alt="">
+				<img data-deploy="modal" data-id="5" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="<?= $this->urlTo('http://placehold.it/900x700.png?text=900x700 5.jpg') ?>" alt="">
 			</div>
 			<div class="col-md-4">
-				<img data-deploy="modal" data-id="6" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="http://placehold.it/900x700.png?text=900x700 6.jpg" alt="">
+				<img data-deploy="modal" data-id="6" data-text="Lorem ipsum" class="img-fluid d-block m-auto" src="<?= $this->urlTo('http://placehold.it/900x700.png?text=900x700 6.jpg') ?>" alt="">
 			</div>
 		</div>
 	</section>
@@ -68,5 +68,5 @@
 <?php $this->stop() ?>
 
 <?php $this->push("scripts") ?>
-	<script src="<?= $this->urlTo('assets/js/gallery-widget.js') ?>"></script>
+	<?= $this->htmlScript("assets/js/gallery-widget.js") ?>
 <?php $this->stop() ?>

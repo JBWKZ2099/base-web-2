@@ -29,26 +29,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<?php /* CSS Tags */ ?>
 	<?php /*Bootstrap css minified*/ ?>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
+	<?= $this->htmlStyle("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css") ?>
 	<?php /*Style Core*/ ?>
-	<link rel="stylesheet" href="<?=$this->urlTo('assets/css/core.css')?>">
+	<?= $this->htmlStyle("assets/css/core.css") ?>
 	<?php /*Style Custom*/ ?>
-	<link rel="stylesheet" href="<?=$this->urlTo('assets/css/custom.css')?>">
+	<?= $this->htmlStyle("assets/css/custom.css") ?>
 
 	<?php /* JS Tags */ ?>
 	<?php /*jQuery js minified*/ ?>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+	<?= $this->htmlScript("https://code.jquery.com/jquery-3.3.1.min.js",["crossorigin"=>"anonymous"]) ?>
 	<?php /*jQuery UI*/ ?>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<?= $this->htmlScript("https://code.jquery.com/ui/1.12.1/jquery-ui.min.js") ?>
 	<?php /*Bootstrap js minified*/ ?>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<?= $this->htmlScript("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js",["crossorigin"=>"anonymous"]) ?>
+	<?= $this->htmlScript("https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js",["crossorigin"=>"anonymous"]) ?>
 	<?php /*Fontawesome*/ ?>
-	<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+	<?= $this->htmlScript("https://use.fontawesome.com/releases/v5.1.0/js/all.js",["defer"]) ?>
 	<?php /*Scroll reveal*/ ?>
-	<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+	<?= $this->htmlScript("https://unpkg.com/scrollreveal/dist/scrollreveal.min.js") ?>
 	<?php /*Script custom*/ ?>
-	<script src="<?=$this->urlTo('assets/js/head.js')?>"></script>
+	<?= $this->htmlScript("assets/js/head.js") ?>
 
 	<?php
 		// Path where are storaged media files (img, video, etc)

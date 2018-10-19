@@ -7,8 +7,8 @@
 				<div class="row">
 					<div class="col-md-12">
 						CONTENT <br>
-						<a href="<?= $this->urlTo( $path.isFile()[1]."/".slugger("nombre link"),'route' ); ?>">Link Test 1</a> <br>
-						<a href="<?= $this->urlTo( $path.isFile()[1]."/".slugger("otro link"),'route' ); ?>" title="">Link Test 2</a>
+						<a href="<?= $this->urlTo( isFile()[1]."/".slugger("nombre link") ); ?>">Link Test 1</a> <br>
+						<a href="<?= $this->urlTo( isFile()[1]."/".slugger("otro link") ); ?>" title="">Link Test 2</a>
 					</div>
 				</div>
 			</div>

@@ -17,7 +17,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
 	<div class="container nb-container m-auto">
-		<a class="navbar-brand" href="<?= $this->urlTo("/","route"); ?>">
+		<a class="navbar-brand" href="<?= $this->urlTo("/"); ?>">
 			<!-- <img src="holder.js/200x50.svg?random=yes&text=200x50 SVG" alt="Brand" class="img-fluid"> -->
 			<img src="#" alt="Brand" class="img-fluid">
 		</a>
@@ -29,7 +29,7 @@
 			<ul class="navbar-nav mr-auto">
 				<?php foreach($items as $item) { ?>
 					<li class='nav-item<?php act($item->active, $active); ?>'>
-						<a class='nav-link text-center' href='<?= $this->urlTo($item->link,'route'); ?>' data-target="<?php echo $item->data_target; ?>"><?php echo $item->word ?></a>
+						<a class='nav-link text-center' href='<?= $this->urlTo($item->link); ?>' data-target="<?php echo $item->data_target; ?>"><?php echo $item->word ?></a>
 					</li>
 				<?php } ?>
 			</ul>

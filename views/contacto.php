@@ -8,7 +8,7 @@
 		<div class="container-custom">
 			<div class="row">
 				<div class="col-md-12">
-					<form action="<?= $this->urlTo('php/mailer/index.php','route') ?>" method="POST">
+					<form action="<?= $this->urlTo('php/mailer/index.php') ?>" method="POST">
 						<div class="form-group">
 							<input type="text" class="form-control" name="name" value="" placeholder="Nombre:" required>
 						</div>
@@ -34,7 +34,7 @@
 
 <?php $this->push("scripts") ?>
 	<!-- Google reCaptcha -->
-	<script src="https://www.google.com/recaptcha/api.js?onload=renderCaptcha&render=explicit" async="async" defer="defer"></script>
+	<?= $this->htmlScript("https://www.google.com/recaptcha/api.js?onload=renderCaptcha&render=explicit",["async"=>"async", "defer"=>"defer"]) ?>
 	<script>
 		var recaptcha;
 		var renderCaptcha = function() {

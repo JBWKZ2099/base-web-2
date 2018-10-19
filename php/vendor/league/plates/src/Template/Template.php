@@ -71,6 +71,28 @@ class Template
         $this->name = new Name($engine, $name);
 
         $this->data($this->engine->getData($name));
+
+        $this->path = (!empty($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'];
+        /**
+         * Optimized code to work on local with virtualhosts or localhost or production server
+         */
+        $this->path = (!empty($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'];
+
+        $app_name = "plate";
+        switch( $this->path ) {
+            case "http://localhost":
+                $this->path .= "/".$app_name."/";
+                break;
+
+            case "http://fabricadesoluciones.info":
+                $this->path .= "/".$app_name."/";
+                break;
+
+            default:
+                $this->path .= "/";
+                break;
+        }
+        // $this->path = $_SERVER['HTTP_HOST'] == 'localhost:8888' ? '/fabricadesoluciones.com/' : '';
     }
 
     /**
@@ -350,40 +372,105 @@ class Template
      * @param  null|string $functions
      * @return string
      */
-    public function urlTo($file,$type=null) {
+    public function urlTo($file) {
         $file = ltrim($file, '/');
+        return $this->validateUrl($file);
+    }
 
-        $path = (!empty($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'];
-        /**
-         * Optimized code to work on local with virtualhosts or localhost or production server
-         */
-        $path = (!empty($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'];
+    public function htmlStyle($file,$attributes=[]) {
+        $file = ltrim($file, '/');
+        $href = $this->validateUrl($file,"style");
 
-        $app_name = "plate";
-        switch( $path ) {
-            case "http://localhost":
-                $path .= "/".$app_name."/";
-                break;
+        $defaults = ['media' => 'all', 'type' => 'text/css', 'rel' => 'stylesheet'];
 
-            case "http://fabricadesoluciones.info":
-                $path .= "/".$app_name."/";
-                break;
+        $attributes = $attributes + $defaults;
+        $attributes["href"] = $this->validateUrl($href);
 
-            default:
-                $path .= "/";
-                break;
+
+        $style_tag = '<link '.$this->attributes($attributes).'>'.PHP_EOL;
+        
+        return $style_tag;
+    }
+
+    public function htmlScript($file,$attributes=[]) {
+        $file = ltrim($file, '/');
+        $href = $this->validateUrl($file,"script");
+        $attributes['src'] = $href;
+
+        $style_tag = '<script' . $this->attributes($attributes) . '></script>'.PHP_EOL;
+        
+        return $style_tag;
+    }
+
+
+    /**
+     * Build path
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
+    public function validateUrl($url,$type=null) {
+        $explode_url = explode("://", $url);
+
+        if( !array_key_exists(1,$explode_url) ) {
+            if( $type=="style" || $type=="script" )
+                $last_updated = "?v=".filemtime($url);
+            else
+                $last_updated = "";
+
+            $url = $this->path.$url.$last_updated;
         }
-        // $path = $_SERVER['HTTP_HOST'] == 'localhost:8888' ? '/fabricadesoluciones.com/' : '';
 
-        if( $type==null || $type=="css" || $type=="js" || $type=="image" ) {
-            $last_updated = filemtime($file);
-            return $path.$file.'?v=' . $last_updated;
-        } else if( $type=="route" ) {
-            return $path.$file;
-        } else {
-            throw new LogicException(
-                "El asset \"$type\" especificado no existe."
-            );
+        return $url;
+    }
+
+    /**
+     * Build an HTML attribute string from an array.
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
+    public function attributes($attributes) {
+        $html = [];
+
+        foreach ((array) $attributes as $key => $value) {
+            $element = $this->attributeElement($key, $value);
+
+            if (! is_null($element)) {
+                $html[] = $element;
+            }
+        }
+
+        return count($html) > 0 ? ' ' . implode(' ', $html) : '';
+    }
+
+    /**
+     * Build a single attribute element.
+     *
+     * @param string $key
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function attributeElement($key, $value) {
+        // For numeric keys we will assume that the value is a boolean attribute
+        // where the presence of the attribute represents a true value and the
+        // absence represents a false value.
+        // This will convert HTML attributes such as "required" to a correct
+        // form instead of using incorrect numerics.
+        if (is_numeric($key)) {
+            return $value;
+        }
+
+        // Treat boolean attributes as HTML properties
+        if (is_bool($value) && $key != 'value') {
+            return $value ? $key : '';
+        }
+
+        if (! is_null($value)) {
+            return $key . '="' . $value . '"';
         }
     }
 }
